@@ -11,7 +11,7 @@ from django.core.mail import EmailMessage
 def send_notification(instance, created, **kwargs):
     if created:
         robot_serial = instance.serial
-        orders = Order.objects.filter(robot_serial=robot_serial)
+        orders = Order.objects.filter(robot_serial=robot_serial).select_related('customer')
         customer_mails = [order.customer.email for order in orders]
         model = instance.model
         version = instance.version
