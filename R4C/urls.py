@@ -14,11 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
-from robots.views import add_to_excel
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('add_to_excel/', add_to_excel),
+    path('', include('robots.urls')),
 ]
